@@ -167,9 +167,24 @@ class Control():
     # 浏览器(pygbag)用主循环：每帧让出控制权给事件循环
     async def run_web(self):
         while not self.done:
-            self.event_loop()
-            self.update()
-            pg.display.update()
+            try:
+                self.event_loop()
+                self.update()
+                pg.display.update()
+            except Exception:
+                # 浏览器中看不到控制台，把运行错误直接画在画布上
+                import traceback
+                import pygame.font as _pgfont
+                surface = pg.display.get_surface()
+                if surface is not None:
+                    surface.fill((0, 0, 0))
+                    font = _pgfont.Font(None, 22)
+                    for i, line in enumerate(traceback.format_exc().splitlines()[-28:]):
+                        surface.blit(font.render(line, True, (255, 100, 100)), (20, 25 * i))
+                    pg.display.update()
+                logger.error(traceback.format_exc())
+                self.done = True
+                break
             await asyncio.sleep(0)
             self.clock.tick(self.fps)
 
