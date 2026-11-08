@@ -1,0 +1,4 @@
+# 编译产物与缓存（网页版已放入 docs/）
+build/
+__pycache__/
+*.pyc
