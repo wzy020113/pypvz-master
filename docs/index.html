@@ -149,7 +149,7 @@ config = {
     user_canvas : 0,
     user_canvas_managed : 0,
     gui_divider : 2,
-    ume_block : 0,
+    ume_block : (/iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent) ? 1 : 0),
     can_close : 0,
     archive : "pypvz-master-v5",
     gui_debug : 2,
