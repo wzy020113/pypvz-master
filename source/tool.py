@@ -228,7 +228,22 @@ def load_image_frames(  directory:str, image_name:str,
 def load_all_gfx(   directory:str, colorkey:tuple[int]=c.WHITE,
                     accept:tuple[str]=(".png", ".jpg", ".bmp", ".gif", ".webp")) -> dict[str:pg.Surface]:
     graphics = {}
-    for name1 in os.listdir(directory):
+    # 浏览器中素材加载慢，在画布上显示加载进度
+    _font = None
+    _names = [n for n in os.listdir(directory) if os.path.isdir(os.path.join(directory, n))]
+    _total = max(1, len(_names))
+    for _idx, name1 in enumerate(os.listdir(directory)):
+        # 在画布上绘制加载进度
+        surface = pg.display.get_surface()
+        if surface is not None:
+            import pygame.font as _pgfont
+            if _font is None:
+                _pgfont.init()
+                _font = _pgfont.Font(None, 40)
+            surface.fill(c.BLACK)
+            surface.blit(_font.render(f"Loading assets {(_idx+1)*100//_total}%  [{name1}]",
+                                      True, (255, 255, 255)), (60, 400))
+            pg.display.update()
         # subfolders under the folder resources\graphics
         dir1 = os.path.join(directory, name1)
         if os.path.isdir(dir1):
