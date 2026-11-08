@@ -54,6 +54,15 @@ class State():
         except OSError:
             pass
 
+# 浏览器 WASM 不支持 opus 解码，音乐加载失败时静默跳过（仅无背景音乐）
+def loadMusic(path:str):
+    try:
+        pg.mixer.music.load(path)
+        return True
+    except pg.error as e:
+        logger.warning(f"音乐加载失败(已跳过): {path} - {e}")
+        return False
+
 # 进行游戏控制 循环 事件响应
 class Control():
     def __init__(self):

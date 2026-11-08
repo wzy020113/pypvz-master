@@ -75,7 +75,7 @@ class GameVictoryScreen(Screen):
         self.setupImage(self.image_name)
         pg.display.set_caption("pypvz: 战斗胜利！")
         pg.mixer.music.stop()
-        pg.mixer.music.load(os.path.join(c.PATH_MUSIC_DIR, "zenGarden.opus"))
+        tool.loadMusic(os.path.join(c.PATH_MUSIC_DIR, "zenGarden.opus"))
         pg.mixer.music.play(-1, 0)
         pg.mixer.music.set_volume(self.game_info[c.SOUND_VOLUME])
 
@@ -198,7 +198,7 @@ class AwardScreen(tool.State):
         self.setupImage()
         pg.display.set_caption("pypvz: 您获得了新的战利品！")
         pg.mixer.music.stop()
-        pg.mixer.music.load(os.path.join(c.PATH_MUSIC_DIR, "zenGarden.opus"))
+        tool.loadMusic(os.path.join(c.PATH_MUSIC_DIR, "zenGarden.opus"))
         pg.mixer.music.play(-1, 0)
         pg.mixer.music.set_volume(self.game_info[c.SOUND_VOLUME])
 

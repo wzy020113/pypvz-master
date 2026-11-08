@@ -359,7 +359,7 @@ class Level(tool.State):
 
         # 播放选卡音乐
         pg.mixer.music.stop()
-        pg.mixer.music.load(os.path.join(c.PATH_MUSIC_DIR, "chooseYourSeeds.opus"))
+        tool.loadMusic(os.path.join(c.PATH_MUSIC_DIR, "chooseYourSeeds.opus"))
         pg.mixer.music.play(-1, 0)
         pg.mixer.music.set_volume(self.game_info[c.SOUND_VOLUME])
 
@@ -381,7 +381,7 @@ class Level(tool.State):
 
         # 播放bgm
         pg.mixer.music.stop()
-        pg.mixer.music.load(os.path.join(c.PATH_MUSIC_DIR, self.bgm))
+        tool.loadMusic(os.path.join(c.PATH_MUSIC_DIR, self.bgm))
         pg.mixer.music.play(-1, 0)
         pg.mixer.music.set_volume(self.game_info[c.SOUND_VOLUME])
 
