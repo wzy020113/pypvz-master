@@ -1,14 +1,14 @@
 <html lang="en-us"><script src="https://pygame-web.github.io/cdn/0.9.3/pythons.js" type=module id="site" data-python="python3.12" data-LINES=42 data-COLUMNS=132 data-os="vtx,snd,gui" async defer>#<!--
 
 print("""
-Loading pypvz-master-v4 from pypvz-master-v4.apk
+Loading pypvz-master-v5 from pypvz-master-v5.apk
     Pygbag Version : 0.9.3
     Template Version : 0.9.3
     Python  : 3.12
     CDN URL : https://pygame-web.github.io/cdn/0.9.3/
     Screen  : 1280x720
-    Title   : pypvz-master-v4
-    Folder  : pypvz-master-v4
+    Title   : pypvz-master-v5
+    Folder  : pypvz-master-v5
     Authors : pgw
     SPDX-License-Identifier: cookiecutter.spdx
 
@@ -29,22 +29,22 @@ async def custom_site():
     platform.window.canvas.style.visibility = "visible"
 
 
-    bundle = "pypvz-master-v4"
+    bundle = "pypvz-master-v5"
 
     # the C or js loader could do that but be explicit.
-    appdir = Path(f"/data/data/{bundle}") # /data/data/pypvz-master-v4
+    appdir = Path(f"/data/data/{bundle}") # /data/data/pypvz-master-v5
     appdir.mkdir()
 
 
     # unpack filesystem from compressed archive into work dir
     if platform.window.location.host.find('.itch.zone')>0:
         import zipfile
-        async with platform.fopen("pypvz-master-v4.apk", "rb") as archive:
+        async with platform.fopen("pypvz-master-v5.apk", "rb") as archive:
             with zipfile.ZipFile(archive) as zip_ref:
                 zip_ref.extractall(appdir.as_posix())
     else:
         import tarfile
-        async with platform.fopen("pypvz-master-v4.tar.gz", "rb") as archive:
+        async with platform.fopen("pypvz-master-v5.tar.gz", "rb") as archive:
             tar = tarfile.open(fileobj=archive, mode="r:gz")
             tar.extractall(path=appdir.as_posix(), filter='tar')
             tar.close()
@@ -151,7 +151,7 @@ config = {
     gui_divider : 2,
     ume_block : 0,
     can_close : 0,
-    archive : "pypvz-master-v4",
+    archive : "pypvz-master-v5",
     gui_debug : 2,
     cdn : "https://pygame-web.github.io/cdn/0.9.3/",
     autorun : 1,
@@ -178,7 +178,7 @@ function show_infobox() {
 
 </script>
 
-    <title>pypvz-master-v4</title>
+    <title>pypvz-master-v5</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
